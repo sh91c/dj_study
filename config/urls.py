@@ -14,8 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # django-admin-honeypot 앱을 통해, 가짜 admin 페이지를 노출 시킬수 있다.
+    path('admin/', admin.site.urls), # URL reverse : 임의의 주소를 변경해도 내부에서 찾아가는 기능
+    path('instagram/', include('instagram.urls')),
 ]
