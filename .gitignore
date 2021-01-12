@@ -1,0 +1,13 @@
+config/settings.py
+db.sqlite3
+
+.idea
+venv
+media
+
+instagram/migrations
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
