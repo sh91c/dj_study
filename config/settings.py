@@ -29,16 +29,26 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # third party apps
+    'django_extensions',
+    'debug_toolbar',
+
+    # local apps
+    'accounts',
     'instagram',
 ]
 
 MIDDLEWARE = [
+    # django-debug-toolbar
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -117,3 +127,9 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+INTERNAL_IPS = ['127.0.0.1']
+
+# !!! 앱 내에서 User 모델을 새로 만들었다면!!!
+# AUTH_USER_MODEL = 'instagram.User'
+# !!! Settings에서 지정을 해줘야함 !!!
