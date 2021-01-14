@@ -39,7 +39,7 @@ class Post(models.Model):
 
     # URL reverse
     def get_absolute_url(self):
-        return reverse('instagram:post_detail', args=self.pk)
+        return reverse('instagram:post_detail', args=[self.pk])
 
     class Meta:
         ordering = ['-id']
