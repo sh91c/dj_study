@@ -13,6 +13,7 @@ from django.conf import settings
 # ==> 현재 활성화된 유저 모델을 얻을 수 있는 메소드 -> from django.contrib.auth import get_user_model
 # ==> user = get_user_model
 #######################
+from django.urls import reverse
 
 
 class Post(models.Model):
@@ -35,6 +36,10 @@ class Post(models.Model):
     def __str__(self):
         # return f" Custom Post object ({self.id})"
         return self.message
+
+    # URL reverse
+    def get_absolute_url(self):
+        return reverse('instagram:post_detail', args=self.pk)
 
     class Meta:
         ordering = ['-id']

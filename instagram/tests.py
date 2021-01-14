@@ -25,3 +25,11 @@ from .models import Post
 # # qs = qs.filter(Q(id__gte=2) & Q(message__icontains=query)) Q 객체를 사용한 WHERE ~ AND 절
 # qs = qs.filter(Q(id__gte=2) | Q(message__icontains=query)) # WHERE ~ OR 절
 # print(qs)
+
+###############################################################
+# URL Reverse
+from django.urls import reverse
+from django.shortcuts import resolve_url
+print(reverse('instagram:post_list'))
+print(reverse('instagram:post_detail', args=[123992342349]))
+print(resolve_url('instagram:post_detail', pk=1231231212451254))

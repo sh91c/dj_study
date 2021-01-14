@@ -1,0 +1,7 @@
+
+<h2>latest</h2>
+{{ latest }}
+<h2>DateList</h2>
+{% for date in date_list %}
+    {{ date|date:"Y" }}
+{% endfor %}
