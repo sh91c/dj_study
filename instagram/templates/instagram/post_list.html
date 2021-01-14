@@ -13,6 +13,9 @@
         <input type="text" name="q" value="{{ q }}"/>
         <input type="submit" value="Search"/>
     </form>
+
+    <a href="{% url 'instagram:post_new' %}" class="btn btn-primary btn-block mt-3 mb-3">새 포스팅</a>
+
     <table class="table table-bordered table-hover">
         <tbody>
         {% for post in post_list %}
@@ -28,7 +31,7 @@
                     {% endif %}
                 </td>
                 <td>
-                    <a href="{{ post.get_absolute_url }}">
+                    <a href="{{ post.get_absolute_url }}">{{ post.message }}
 {#                    <a href="{% url 'instagram:post_detail' post.pk %}">{{ post.message }}</a>#}
                     </a>
                 </td>

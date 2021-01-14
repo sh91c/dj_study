@@ -26,6 +26,7 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ['message']
     # 우측에 필터 옵션 활성화
     list_filter = ['created_at', 'is_published']
+    # form = PostForm
 
     def photo_tag(self, post):
         if post.photo:

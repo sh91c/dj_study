@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MinLengthValidator
 
 ### !!! WARNING !!! ###
 # from django.contrib.auth.models import User
@@ -8,7 +9,6 @@ from django.db import models
 # ==> 제일 안전하고 확실한 장고 유저 모델 지정 방법은 아래 import 문처럼
 from django.conf import settings
 
-
 # ㄴ-> 해줘야함
 # ==> 현재 활성화된 유저 모델을 얻을 수 있는 메소드 -> from django.contrib.auth import get_user_model
 # ==> user = get_user_model
@@ -16,10 +16,16 @@ from django.conf import settings
 from django.urls import reverse
 
 
+# min_length_validator = MinLengthValidator(3) # 최소 3글자 이상
+# min_length_validator('he') # forms.ValidationError 발생
+
+
 class Post(models.Model):
     # 장고의 올바른 User Model 불러오는 방법 : settings.AUTH_USER_MODEL
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    message = models.TextField()
+    message = models.TextField(
+        validators=[MinLengthValidator(10)]
+    )
 
     # pillow 패키지 사용 추천, imagemagic도 있음
     # 속성 upload_to : media_root 밑에 하위 디렉토리를 설정할 수 있음
@@ -41,8 +47,8 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('instagram:post_detail', args=[self.pk])
 
-    class Meta:
-        ordering = ['-id']
+        class Meta:
+            ordering = ['-id']
 
     # 인자 없는 속성(함수), model단에서 구현
     # def message_length(self):
@@ -62,6 +68,7 @@ class Comment(models.Model):
 
 class Tag(models.Model):
     name = models.CharField(max_length=50, unique=True)
+
     # post_set = models.ManyToManyField(Post)
 
     def __str__(self):

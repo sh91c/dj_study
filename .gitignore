@@ -11,3 +11,7 @@ instagram/migrations
 __pycache__/
 *.py[cod]
 *$py.class
+
+config/static
+instagram/static
+staticfiles
