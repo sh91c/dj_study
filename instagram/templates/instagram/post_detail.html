@@ -6,7 +6,9 @@
     </div>
 {% endif %}
 
-{{ post.message }}
+{{ post.message|linebreaks }}
 <div>
-<a href="{% url 'instagram:post_list' %}" class="btn btn-primary btn-block mt-3 mb-3">목록으로</a>
+    <a href="{% url 'instagram:post_list' %}" class="btn btn-primary btn-block mt-3 mb-3">목록으로</a> <br />
+    <a href="{% url 'instagram:post_edit' post.pk %}" class="btn btn-primary btn-block mt-3 mb-3">수정하기</a> <br />
+    <a href="{% url 'instagram:post_delete' post.pk %}" class="btn btn-primary btn-block mt-3 mb-3">삭제하기</a>
 </div>

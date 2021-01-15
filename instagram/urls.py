@@ -25,6 +25,10 @@ urlpatterns = [
     # form test
     path('new/', views.post_new, name='post_new'),
 
+    # ModelForm 수정 및 삭제
+    path('<int:pk>/edit/', views.post_edit, name='post_edit'),
+    path('<int:pk>/delete/', views.post_delete, name='post_delete'),
+
     # URL Captured Value, 아래 두개는 의미가 같음
     path('<int:pk>/', views.post_detail, name='post_detail'),  # 적절하게 형변환
     # re_path(r'(?P<pk>\d+)/$', views.post_detail),  # 정규식, 문자열로 입력받음

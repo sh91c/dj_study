@@ -1,0 +1,9 @@
+{% load bootstrap4 %}
+<form action="" method="POST">
+    {% csrf_token %}
+    <div class="alert alert-danger">
+        정말 삭제하시겠습니까?
+    </div>
+    <input type="submit" value="네, 삭제합니다." class="btn btn-danger" />
+    <a href="{{ post.get_absolute_url }}"> 돌아가기 </a>
+</form>

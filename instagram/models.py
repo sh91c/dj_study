@@ -47,8 +47,8 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('instagram:post_detail', args=[self.pk])
 
-        class Meta:
-            ordering = ['-id']
+    class Meta:
+        ordering = ['-id']
 
     # 인자 없는 속성(함수), model단에서 구현
     # def message_length(self):
