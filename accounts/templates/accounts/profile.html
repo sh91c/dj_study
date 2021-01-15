@@ -1,0 +1,18 @@
+{% extends 'accounts/layout.html' %}
+
+{% block content %}
+{#    user :<br/>#}
+{#        -로그인 : User 모델의 인스턴스<br/>#}
+{#        -로그아웃 : AnonymousUser (파이썬 클래스) 인스턴스#}
+    <h2>User: {{ user }}</h2>
+{#    <h5>user.is_authenticated: {{ user.is_authenticated }}</h5>#}
+
+    {% if user.profile %}
+        <ul>
+            <li>{{ user.profile.address }}</li>
+            <li>{{ user.profile.zipcode }}</li>
+        </ul>
+    {% endif %}
+
+    <a href="{% url 'accounts:profile_edit' %}" class="btn btn-primary">프로필 수정</a>
+{% endblock %}

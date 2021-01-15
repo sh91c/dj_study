@@ -1,6 +1,7 @@
 from django.test import TestCase
 from django.shortcuts import get_object_or_404, render
 
+
 # Post = 'import PostModel'
 # Article = 'import ArticleModel'
 #
@@ -20,3 +21,56 @@ from django.shortcuts import get_object_or_404, render
 #
 # post_detail = generate_view_fn(Post)
 # article_detail = generate_view_fn(Article)
+
+
+# django 외 파이썬 테스트
+
+# class Person:
+#     def greeting(self):
+#         print('안녕하세요')
+#
+#
+# class University:
+#     def manage_credit(self):
+#         print('학점 관리')
+#
+#
+# class Undergraduate(Person, University):
+#     def study(self):
+#         print('공부하기')
+#
+# james = Undergraduate()
+# james.greeting()
+# james.manage_credit()
+# james.study()
+
+# 다이아몬드 상속 == 지옥
+class A:
+    def greeting(self):
+        print('Hi Im A')
+
+
+class B:
+    def greeting(self):
+        print('Hi Im B')
+
+
+
+
+class C:
+    def greeting(self):
+        print('Hi Im C')
+        self.d_method()
+
+class D(B,C):
+    def d_method(self):
+        print('d_method 호출')
+
+    def c_method(self):
+        c = C()
+        c.greeting()
+
+x = D()
+x.greeting()
+# 파이썬은 메소드 탐색 순서 Method Resolution Order, MRO)를 따른다.
+print(D.__mro__)

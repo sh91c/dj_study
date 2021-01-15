@@ -1,3 +1,6 @@
+{% extends 'layout.html' %}
+{% block content %}
+
 {% load bootstrap4 %}
 <!doctype html>
 <html lang="ko">
@@ -9,10 +12,10 @@
     <title>Instagram / Post List</title>
 </head>
 <body>
-    <form action="" method="GET">
-        <input type="text" name="q" value="{{ q }}"/>
-        <input type="submit" value="Search"/>
-    </form>
+{#    <form action="" method="GET">#}
+{#        <input type="text" name="q" value="{{ q }}"/>#}
+{#        <input type="submit" value="Search"/>#}
+{#    </form>#}
 
     <a href="{% url 'instagram:post_new' %}" class="btn btn-primary btn-block mt-3 mb-3">새 포스팅</a>
 
@@ -32,16 +35,17 @@
                 </td>
                 <td>
                     <a href="{{ post.get_absolute_url }}">{{ post.message }}
-{#                    <a href="{% url 'instagram:post_detail' post.pk %}">{{ post.message }}</a>#}
+                    <a href="{% url 'instagram:post_detail' post.pk %}">{{ post.message }}</a>
                     </a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-    {# {{ page_obj }} #}
+     {{ page_obj }}
     {% if is_paginated %}
         {% bootstrap_pagination page_obj size="small" justify_content="center" %}
     {% endif %}
 </body>
 </html>
+{% endblock content %}
